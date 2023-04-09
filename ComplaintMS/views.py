@@ -15,6 +15,7 @@ from .models import Profile,Complaint
 
 from django.shortcuts import get_object_or_404,render, redirect
 from django.http import HttpResponse
+#! importing the forms from forms.py
 from .forms import UserRegisterForm,ProfileUpdateForm,UserProfileform,ComplaintForm,UserProfileUpdateform,statusupdate
 
 from django.contrib.auth.decorators import login_required
@@ -68,6 +69,7 @@ def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         profile_form=UserProfileform(request.POST)
+        #! create instance of userProfileform from .forms, first we have imported it above
         if form.is_valid() and profile_form.is_valid() :
             
             new_user=form.save()

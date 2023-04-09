@@ -66,7 +66,7 @@ class ProfileUpdateForm(forms.ModelForm):
         username = self.cleaned_data.get('email')
 
         # Check to see if any users already exist with this email as a username.
-        try:
+        try:  
             match = User.objects.exclude(pk=self.instance.pk).get(username=username)
             
             
