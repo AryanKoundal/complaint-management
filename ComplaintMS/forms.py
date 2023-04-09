@@ -1,4 +1,4 @@
-from django import forms
+from django import forms # django forms class
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.forms.widgets import DateInput
@@ -8,6 +8,9 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 import requests
 
+# create ComplaintForm class inheriting forms.ModelForm
+# model complaint
+# fields
 class ComplaintForm(forms.ModelForm):
     class Meta:
         model=Complaint
@@ -63,7 +66,7 @@ class ProfileUpdateForm(forms.ModelForm):
         username = self.cleaned_data.get('email')
 
         # Check to see if any users already exist with this email as a username.
-        try:
+        try:  
             match = User.objects.exclude(pk=self.instance.pk).get(username=username)
             
             
